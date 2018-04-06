@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ReportCard {
 
-    public static final String NEW_LINE = "\n";
+    private static final String NEW_LINE = "\n";
     private School school;
     private Student student;
     private int year = 0;
@@ -36,7 +36,7 @@ public class ReportCard {
     /**
      * @return an integer value for a given year, or the current year
      */
-    public int getYear() {
+    int getYear() {
         Calendar currentCalender = Calendar.getInstance();
         int currentYear = currentCalender.get(Calendar.YEAR);
 
@@ -44,7 +44,7 @@ public class ReportCard {
             year = currentYear;
         }
 
-        return currentYear;
+        return year;
     }
 
     public void addGradedSubject(String name, String grade) {
@@ -56,20 +56,22 @@ public class ReportCard {
 
     @Override
     public String toString() {
-        String output =
-                school + " Report " + String.valueOf(getYear()) + NEW_LINE +
+        StringBuilder builder = new StringBuilder();
+        builder.append(
+
+                school + " Report " + getYear() + NEW_LINE +
                         "Student" + " " + student + NEW_LINE +
-                        "Subjects" + NEW_LINE;
+                        "Subjects" + NEW_LINE);
 
         if (subjects.size() > 0) {
             for (GradedSubject gradedSubject : subjects) {
-                output += gradedSubject + NEW_LINE;
+                builder.append(gradedSubject + NEW_LINE);
             }
         } else {
-            output += "You have not added any graded Subjects.";
+            builder.append("You have not added any graded Subjects.");
         }
 
-        return output;
+        return builder.toString();
     }
 }
 

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         TextView test = (TextView) findViewById(R.id.test);
 
 
-        ReportCard report = new ReportCard("Random High School", 2100, "JohnDoe");
+        ReportCard report = new ReportCard("Random High School", 2100, "John Doe");
         report.addGradedSubject("Mathematics", "A");
         report.addGradedSubject("Physics", "B");
         report.addGradedSubject("History", "c");
